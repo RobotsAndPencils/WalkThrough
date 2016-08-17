@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WalkThrough</string>
+    <string name="start_walkthrough">Start Walkthrough</string>
+</resources>
