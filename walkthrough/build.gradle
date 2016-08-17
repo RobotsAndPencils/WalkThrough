@@ -2,6 +2,30 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'me.tatarka.retrolambda'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'WalkThrough'
+
+    publishedGroupId = 'com.robotsandpencils.walkthrough'
+    libraryName = 'walkthrough'
+    artifact = 'walkthrough'
+
+    libraryDescription = 'WalkThrough for Android'
+
+    siteUrl = 'https://github.com/RobotsAndPencils/WalkThrough'
+    gitUrl = 'https://github.com/RobotsAndPencils/WalkThrough.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'android'
+    developerName = 'Robots & Pencils Android Team'
+    developerEmail = 'android@robotsandpencils.com'
+
+    licenseName = 'The MIT License (MIT)'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
@@ -43,3 +67,6 @@ dependencies {
 
     compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
 }
+
+apply from: '../installv1.gradle'
+apply from: '../bintrayv1.gradle'
