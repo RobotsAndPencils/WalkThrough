@@ -15,20 +15,20 @@ Example:
 ```java
 @NonNull
 public List<Page> getScreens() {
-    WalkThroughScreenView screen1 = new WalkThroughScreenView(mContext).setMessage("Card wallet feature")
+    WalkThroughScreenView screen1 = new WalkThroughScreenView(mContext).setMessage("Join the Frequent Note Taking program")
             .showClose(true);
 
-    WalkThroughScreenView screen2 = new WalkThroughScreenView(mContext).setMessage("Low on data each month?")
+    WalkThroughScreenView screen2 = new WalkThroughScreenView(mContext).setMessage("Need an efficient way to organize notes?")
             .showClose(true)
             .showNext(true);
 
-    WalkThroughScreenView screen2a = new WalkThroughScreenView(mContext).setMessage("Select the allowances tab")
+    WalkThroughScreenView screen2a = new WalkThroughScreenView(mContext).setMessage("Select the Notes tab")
             .showBack(true)
             .showClose(true);
-    WalkThroughScreenView screen2b = new WalkThroughScreenView(mContext).setMessage("Click on the tariff title")
+    WalkThroughScreenView screen2b = new WalkThroughScreenView(mContext).setMessage("Click on the Notes Organizer button")
             .showBack(true)
             .showClose(true);
-    WalkThroughScreenView screen2c = new WalkThroughScreenView(mContext).setMessage("and change your tariff")
+    WalkThroughScreenView screen2c = new WalkThroughScreenView(mContext).setMessage("and check the Organize Notes checkbox")
             .showBack(true)
             .showClose(true);
 
@@ -56,7 +56,10 @@ LayoutConfiguration layoutConfiguration = new LayoutConfiguration.Builder()
         .build();
 mWalkThroughManager.start(mContext, layoutConfiguration, responseTag -> onClose(responseTag));
 ```
-
+Add the following to your AndroidManifest.xml file:
+```xml
+<activity android:name="com.robotsandpencils.walkthrough.presentation.main.WalkThroughActivity"/>
+```
 The WalkThrough will then be presented in the app and the User can navigate from screen to screen by swiping left or right. A circle page indicator appears at the bottom of each page to show progress through the WalkThrough. Elements within the contents of the current page can be hooked up to the WalkThroughView.nextWalkThrough() method to go to a series of sub-pages that expand on the contents of the current page.
 
 
