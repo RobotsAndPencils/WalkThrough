@@ -68,7 +68,7 @@ Download
 
 Grab via Gradle:
 ```groovy
-compile ' com.robotsandpencils.walkthrough:walkthrough:2.5.2'
+compile ' com.robotsandpencils.walkthrough:walkthrough:0.0.1'
 ```
 
 
