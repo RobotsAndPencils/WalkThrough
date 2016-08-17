@@ -1,14 +1,14 @@
 package com.robotsandpencils.walkthroughsample;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.robotsandpencils.walkthrough.presentation.communication.LayoutConfiguration;
 import com.robotsandpencils.walkthrough.presentation.communication.WalkThroughManager;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.Page;
-import com.robotsandpencils.walkthrough.presentation.main.paging.screens.WalkThroughView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onClose(String responseTag) {
+        Toast.makeText(this, responseTag, Toast.LENGTH_SHORT).show();
     }
 
     @NonNull
