@@ -3,7 +3,7 @@ Walkthrough
 
 An Android library to facilitate navigation of a hierarchy of pages representing a tutorial or walkthrough to show off a series of app features.
 
-![](https://github.com/RobotsAndPencils/WalkThrough/raw/master/images/screenshot.png?dl=0)
+<img src="https://github.com/RobotsAndPencils/WalkThrough/raw/master/images/screenshot.png" width="320" height="599" />
 
 
 Usage
