@@ -60,20 +60,25 @@ public class MainActivity extends AppCompatActivity {
 
     @NonNull
     public List<Page> getScreens() {
-        WalkThroughScreenView screen1 = new WalkThroughScreenView(this).setMessage("Card wallet feature")
+        WalkThroughScreenView screen1 = new WalkThroughScreenView(this)
+                .setMessage("Join the Frequent Note Taking program")
                 .showClose(true);
 
-        WalkThroughScreenView screen2 = new WalkThroughScreenView(this).setMessage("Low on data each month?")
+        WalkThroughScreenView screen2 = new WalkThroughScreenView(this)
+                .setMessage("Need an efficient way to organize notes?")
                 .showClose(true)
                 .showNext(true);
 
-        WalkThroughScreenView screen2a = new WalkThroughScreenView(this).setMessage("Select the allowances tab")
+        WalkThroughScreenView screen2a = new WalkThroughScreenView(this)
+                .setMessage("Select the Notes tab")
                 .showBack(true)
                 .showClose(true);
-        WalkThroughScreenView screen2b = new WalkThroughScreenView(this).setMessage("Click on the tariff title")
+        WalkThroughScreenView screen2b = new WalkThroughScreenView(this)
+                .setMessage("Click on the Notes Organizer button")
                 .showBack(true)
                 .showClose(true);
-        WalkThroughScreenView screen2c = new WalkThroughScreenView(this).setMessage("and change your tariff")
+        WalkThroughScreenView screen2c = new WalkThroughScreenView(this)
+                .setMessage("and check the Organize Notes checkbox")
                 .showBack(true)
                 .showClose(true);
 
