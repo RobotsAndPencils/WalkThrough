@@ -34,6 +34,7 @@ import com.robotsandpencils.walkthrough.presentation.main.paging.PagerFragment;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.Page;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * farhankhan
@@ -44,9 +45,11 @@ public class Navigator {
 
     private static final String TAG_PAGER_FRAGMENT = "tag_pager_fragment";
     private final Counter mCounter = new Counter();
+    private Stack<List<Page>> mPageListStack = new Stack<>();
 
     public void showPagerFragment(FragmentManager fragmentManager, List<Page> pageList) {
-        PagerFragment fragment = PagerFragment.newInstance(pageList);
+        pushPageList(pageList);
+        PagerFragment fragment = PagerFragment.newInstance();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left,
                 R.anim.in_from_left, R.anim.out_to_right);
@@ -56,7 +59,17 @@ public class Navigator {
     }
 
     public void onUpPressed(FragmentManager fragmentManager) {
+        popPageList();
         fragmentManager.popBackStack();
     }
 
+    private void pushPageList(List<Page> pageList) { mPageListStack.push(pageList); }
+
+    private List<Page> popPageList() { return mPageListStack.pop(); }
+
+    public List<Page> getPageList() { return mPageListStack.peek(); }
+
+    public void clear() {
+        mPageListStack.clear();
+    }
 }

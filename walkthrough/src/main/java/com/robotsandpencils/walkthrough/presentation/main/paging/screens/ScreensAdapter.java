@@ -39,6 +39,7 @@ import java.util.List;
 
 public class ScreensAdapter extends PagerAdapter {
 
+    @NonNull
     private List<Page> mLayouts;
 
     public ScreensAdapter(@NonNull List<Page> layouts) {

@@ -36,12 +36,9 @@ import android.view.ViewGroup;
 
 import com.robotsandpencils.walkthrough.R;
 import com.robotsandpencils.walkthrough.databinding.FragmentPagerBinding;
+import com.robotsandpencils.walkthrough.presentation.common.Navigator;
 import com.robotsandpencils.walkthrough.presentation.common.dependency.dagger.DaggerWrapper;
-import com.robotsandpencils.walkthrough.presentation.main.paging.screens.Page;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.ScreensAdapter;
-
-import java.util.Collections;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -55,18 +52,13 @@ public class PagerFragment extends Fragment implements PagerPresenter.View {
     @Inject
     PagerPresenter mPresenter;
 
-    private List<Page> mPageList;
-
-    public void setPageList(List<Page> pageList) {
-        mPageList = Collections.unmodifiableList(pageList);
-    }
+    @Inject
+    Navigator mNavigator;
 
     private FragmentPagerBinding mBinding;
 
-    public static PagerFragment newInstance(List<Page> pageList) {
-        PagerFragment fragment = new PagerFragment();
-        fragment.setPageList(pageList);
-        return fragment;
+    public static PagerFragment newInstance() {
+        return new PagerFragment();
     }
 
     @Override
@@ -106,7 +98,7 @@ public class PagerFragment extends Fragment implements PagerPresenter.View {
     }
 
     private ScreensAdapter getAdapter() {
-        return new ScreensAdapter(mPageList);
+        return new ScreensAdapter(mNavigator.getPageList());
     }
 
 }
