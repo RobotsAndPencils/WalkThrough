@@ -45,6 +45,7 @@ public class LayoutConfiguration {
         mLayouts = layouts;
     }
 
+    @NonNull
     public List<Page> getLayouts() {
         return Collections.unmodifiableList(mLayouts);
     }

@@ -58,8 +58,8 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
     private Page.Listener listener = new Page.Listener() {
         @Override
         public void onClose(String exitText) {
-            mNavigator.onUpPressed(getSupportFragmentManager());
-            checkForExit(1, exitText);
+            mWalkThroughManager.onComplete(exitText);
+            finish();
         }
 
         @Override
@@ -90,6 +90,7 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        mNavigator.clear();
         mPresenter.detach();
     }
 
