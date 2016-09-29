@@ -74,11 +74,11 @@ public class Navigator {
         mPageListStack.clear();
     }
 
-    public void onNextPagePressed() {
-        mPagerFragment.goToNextPage();
+    public boolean onNextPagePressed() {
+        return mPagerFragment.goToNextPage();
     }
 
-    public void onPreviousPagePressed() {
-        mPagerFragment.goToPreviousPage();
+    public boolean onPreviousPagePressed() {
+        return mPagerFragment.goToPreviousPage();
     }
 }

@@ -46,9 +46,9 @@ public class Page {
 
         void onBack();
 
-        void onNextPage();
+        boolean onNextPage();
 
-        void onPreviousPage();
+        boolean onPreviousPage();
     }
 
     private Listener mListener;
@@ -78,13 +78,13 @@ public class Page {
             }
 
             @Override
-            public void onNextPage() {
-                mListener.onNextPage();
+            public boolean onNextPage() {
+                return mListener.onNextPage();
             }
 
             @Override
-            public void onPreviousPage() {
-                mListener.onPreviousPage();
+            public boolean onPreviousPage() {
+                return mListener.onPreviousPage();
             }
         };
         mWalkThroughView.setListener(listener);
