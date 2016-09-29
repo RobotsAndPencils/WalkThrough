@@ -85,4 +85,14 @@ public class WalkThroughScreenView extends WalkThroughView {
         mViewModel.setNextEnabled(show);
         return this;
     }
+
+    public WalkThroughScreenView showNextPage(boolean show) {
+        mViewModel.setNextPageEnabled(show);
+        return this;
+    }
+
+    public WalkThroughScreenView showPreviousPage(boolean show) {
+        mViewModel.setPreviousPageEnabled(show);
+        return this;
+    }
 }
