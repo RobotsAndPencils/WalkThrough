@@ -46,14 +46,15 @@ public class Navigator {
     private static final String TAG_PAGER_FRAGMENT = "tag_pager_fragment";
     private final Counter mCounter = new Counter();
     private Stack<List<Page>> mPageListStack = new Stack<>();
+    private PagerFragment mPagerFragment;
 
     public void showPagerFragment(FragmentManager fragmentManager, List<Page> pageList) {
         pushPageList(pageList);
-        PagerFragment fragment = PagerFragment.newInstance();
+        mPagerFragment = PagerFragment.newInstance();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left,
                 R.anim.in_from_left, R.anim.out_to_right);
-        fragmentTransaction.replace(R.id.fragment_container, fragment, TAG_PAGER_FRAGMENT + mCounter.next());
+        fragmentTransaction.replace(R.id.fragment_container, mPagerFragment, TAG_PAGER_FRAGMENT + mCounter.next());
         fragmentTransaction.addToBackStack(TAG_PAGER_FRAGMENT + mCounter.current());
         fragmentTransaction.commitAllowingStateLoss();
     }
@@ -71,5 +72,13 @@ public class Navigator {
 
     public void clear() {
         mPageListStack.clear();
+    }
+
+    public void onNextPagePressed() {
+        mPagerFragment.goToNextPage();
+    }
+
+    public void onPreviousPagePressed() {
+        mPagerFragment.goToPreviousPage();
     }
 }
