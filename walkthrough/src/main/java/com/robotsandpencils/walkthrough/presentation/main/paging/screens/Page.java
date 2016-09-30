@@ -38,32 +38,20 @@ import java.util.List;
  */
 
 public class Page {
+
     public interface Listener {
         void onClose(String exitText);
 
         void onNext(List<Page> pageList);
 
         void onBack();
+
+        boolean onNextPage();
+
+        boolean onPreviousPage();
     }
 
     private Listener mListener;
-
-    private WalkThroughView.Listener listener = new WalkThroughView.Listener() {
-        @Override
-        public void onClose(String exitText) {
-            mListener.onClose(exitText);
-        }
-
-        @Override
-        public void onNext() {
-            mListener.onNext(mPageList);
-        }
-
-        @Override
-        public void onBack() {
-            mListener.onBack();
-        }
-    };
 
     @NonNull
     private final WalkThroughView mWalkThroughView;
@@ -73,6 +61,32 @@ public class Page {
 
     public Page(@NonNull WalkThroughView walkThroughView, @Nullable List<Page> pageList) {
         mWalkThroughView = walkThroughView;
+        WalkThroughView.Listener listener = new WalkThroughView.Listener() {
+            @Override
+            public void onClose(String exitText) {
+                mListener.onClose(exitText);
+            }
+
+            @Override
+            public void onNext() {
+                mListener.onNext(mPageList);
+            }
+
+            @Override
+            public void onBack() {
+                mListener.onBack();
+            }
+
+            @Override
+            public boolean onNextPage() {
+                return mListener.onNextPage();
+            }
+
+            @Override
+            public boolean onPreviousPage() {
+                return mListener.onPreviousPage();
+            }
+        };
         mWalkThroughView.setListener(listener);
         pageList = pageList == null ? new ArrayList<>() : pageList;
         mPageList = Collections.unmodifiableList(pageList);

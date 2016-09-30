@@ -27,6 +27,8 @@ package com.robotsandpencils.walkthroughsample;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.databinding.BindingAdapter;
+import android.view.View;
 
 /**
  * farhankhan
@@ -38,6 +40,8 @@ public class WalkThroughScreenViewModel extends BaseObservable {
     private boolean mNextEnabled;
     private boolean mBackEnabled;
     private boolean mCloseEnabled;
+    private boolean mNextPageEnabled;
+    private boolean mPreviousPageEnabled;
 
     @Bindable
     public String getMessage() {
@@ -77,5 +81,30 @@ public class WalkThroughScreenViewModel extends BaseObservable {
     public void setCloseEnabled(boolean closeEnabled) {
         mCloseEnabled = closeEnabled;
         notifyPropertyChanged(BR.closeEnabled);
+    }
+
+    @Bindable
+    public boolean isNextPageEnabled() {
+        return mNextPageEnabled;
+    }
+
+    public void setNextPageEnabled(boolean nextPageEnabled) {
+        mNextPageEnabled = nextPageEnabled;
+        notifyPropertyChanged(BR.nextPageEnabled);
+    }
+
+    @Bindable
+    public boolean isPreviousPageEnabled() {
+        return mPreviousPageEnabled;
+    }
+
+    public void setPreviousPageEnabled(boolean previousPageEnabled) {
+        mPreviousPageEnabled = previousPageEnabled;
+        notifyPropertyChanged(BR.previousPageEnabled);
+    }
+
+    @BindingAdapter({"showIfEnabled"})
+    public static void showIfEnabled(View view, boolean enabled) {
+        view.setVisibility(enabled ? View.VISIBLE : View.GONE);
     }
 }

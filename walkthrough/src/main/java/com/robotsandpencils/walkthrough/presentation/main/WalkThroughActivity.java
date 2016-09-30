@@ -74,6 +74,16 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
             mNavigator.onUpPressed(getSupportFragmentManager());
             checkForExit(1, WalkThroughManager.WALKTHROUGH_DEFAULT_EXIT_MESSAGE);
         }
+
+        @Override
+        public boolean onNextPage() {
+            return mNavigator.onNextPagePressed();
+        }
+
+        @Override
+        public boolean onPreviousPage() {
+            return mNavigator.onPreviousPagePressed();
+        }
     };
 
     @Override
