@@ -42,6 +42,10 @@ public class WalkThroughView extends LinearLayout {
         void onNext();
 
         void onBack();
+
+        boolean onNextPage();
+
+        boolean onPreviousPage();
     }
 
     private Listener mListener;
@@ -65,6 +69,10 @@ public class WalkThroughView extends LinearLayout {
     protected void previousWalkThrough() {
         mListener.onBack();
     }
+
+    protected boolean nextPage() { return mListener.onNextPage(); }
+
+    protected boolean previousPage() { return mListener.onPreviousPage(); }
 
     public void setListener(Listener listener) {
         mListener = listener;

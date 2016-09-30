@@ -62,24 +62,30 @@ public class MainActivity extends AppCompatActivity {
     public List<Page> getScreens() {
         WalkThroughScreenView screen1 = new WalkThroughScreenView(this)
                 .setMessage("Join the Frequent Note Taking program")
+                .showNextPage(true)
                 .showClose(true);
 
         WalkThroughScreenView screen2 = new WalkThroughScreenView(this)
                 .setMessage("Need an efficient way to organize notes?")
                 .showClose(true)
+                .showPreviousPage(true)
                 .showNext(true);
 
         WalkThroughScreenView screen2a = new WalkThroughScreenView(this)
                 .setMessage("Select the Notes tab")
                 .showBack(true)
+                .showNextPage(true)
                 .showClose(true);
         WalkThroughScreenView screen2b = new WalkThroughScreenView(this)
                 .setMessage("Click on the Notes Organizer button")
                 .showBack(true)
+                .showNextPage(true)
+                .showPreviousPage(true)
                 .showClose(true);
         WalkThroughScreenView screen2c = new WalkThroughScreenView(this)
                 .setMessage("and check the Organize Notes checkbox")
                 .showBack(true)
+                .showPreviousPage(true)
                 .showClose(true);
 
         List<Page> page2List = new ArrayList<>();

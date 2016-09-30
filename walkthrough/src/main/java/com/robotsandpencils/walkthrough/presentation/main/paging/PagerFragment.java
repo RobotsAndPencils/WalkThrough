@@ -101,4 +101,17 @@ public class PagerFragment extends Fragment implements PagerPresenter.View {
         return new ScreensAdapter(mNavigator.getPageList());
     }
 
+    public boolean goToNextPage() {
+        int nextPagePosition = mBinding.viewPager.getCurrentItem() + 1;
+        if (nextPagePosition >= mNavigator.getPageList().size()) return false;
+        mBinding.viewPager.setCurrentItem(nextPagePosition);
+        return true;
+    }
+
+    public boolean goToPreviousPage() {
+        int previousPagePosition = mBinding.viewPager.getCurrentItem() - 1;
+        if (previousPagePosition < 0) return false;
+        mBinding.viewPager.setCurrentItem(previousPagePosition);
+        return true;
+    }
 }

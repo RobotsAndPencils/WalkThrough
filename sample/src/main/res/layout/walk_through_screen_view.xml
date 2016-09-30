@@ -24,7 +24,8 @@
   ~
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <import type="android.view.View"/>
@@ -57,7 +58,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:text="Back"
-                    android:visibility="@{viewModel.backEnabled ? View.VISIBLE : View.GONE}"/>
+                    app:showIfEnabled="@{viewModel.backEnabled}"/>
 
                 <Button
                     android:id="@+id/button_close"
@@ -66,7 +67,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:text="Close"
-                    android:visibility="@{viewModel.closeEnabled ? View.VISIBLE : View.GONE}"/>
+                    app:showIfEnabled="@{viewModel.closeEnabled}"/>
             </RelativeLayout>
 
             <TextView
@@ -88,7 +89,28 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="100dp"
                 android:text="Show me how"
-                android:visibility="@{viewModel.nextEnabled ? View.VISIBLE : View.GONE}"/>
+                app:showIfEnabled="@{viewModel.nextEnabled}"/>
+
+            <Button
+                android:text="&lt;"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/previousPageButton"
+                app:showIfEnabled="@{viewModel.previousPageEnabled}"/>
+
+            <Button
+                android:text="&gt;"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/nextPageButton"
+                app:showIfEnabled="@{viewModel.nextPageEnabled}"/>
+
         </RelativeLayout>
     </ScrollView>
 </layout>
