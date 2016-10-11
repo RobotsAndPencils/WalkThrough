@@ -30,6 +30,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -113,5 +114,12 @@ public class PagerFragment extends Fragment implements PagerPresenter.View {
         if (previousPagePosition < 0) return false;
         mBinding.viewPager.setCurrentItem(previousPagePosition);
         return true;
+    }
+
+    public boolean deletePage() {
+        PagerAdapter adapter = mBinding.viewPager.getAdapter();
+        ((ScreensAdapter)(mBinding.viewPager.getAdapter())).removePage(mBinding.viewPager.getCurrentItem());
+        adapter.notifyDataSetChanged();
+        return mBinding.viewPager.getAdapter().getCount() > 0;
     }
 }

@@ -46,6 +46,8 @@ public class WalkThroughView extends LinearLayout {
         boolean onNextPage();
 
         boolean onPreviousPage();
+
+        boolean onDeletePage();
     }
 
     private Listener mListener;
@@ -73,6 +75,14 @@ public class WalkThroughView extends LinearLayout {
     protected boolean nextPage() { return mListener.onNextPage(); }
 
     protected boolean previousPage() { return mListener.onPreviousPage(); }
+
+    public boolean deletePage(String reason) {
+        if (!mListener.onDeletePage()) {
+            mListener.onClose(reason);
+            return false;
+        }
+        return true;
+    }
 
     public void setListener(Listener listener) {
         mListener = listener;

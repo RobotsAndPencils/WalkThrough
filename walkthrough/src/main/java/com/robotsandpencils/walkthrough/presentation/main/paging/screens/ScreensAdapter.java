@@ -68,7 +68,21 @@ public class ScreensAdapter extends PagerAdapter {
     }
 
     @Override
+    public int getItemPosition(Object object) {
+        //noinspection SuspiciousMethodCalls
+        if (!mLayouts.contains(object)) {
+            return PagerAdapter.POSITION_NONE;
+        }
+        return super.getItemPosition(object);
+    }
+
+    @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
+    }
+
+    public boolean removePage(int index) {
+        mLayouts.remove(index);
+        return true;
     }
 }

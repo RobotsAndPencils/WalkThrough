@@ -58,6 +58,7 @@ public class WalkThroughScreenView extends WalkThroughView {
         mBinding.buttonClose.setOnClickListener(v -> exitWalkThrough("exit"));
         mBinding.nextPageButton.setOnClickListener(v -> nextPage());
         mBinding.previousPageButton.setOnClickListener(v -> previousPage());
+        mBinding.buttonNoThanks.setOnClickListener(v -> deletePage("reject"));
     }
 
     @Override
@@ -93,6 +94,11 @@ public class WalkThroughScreenView extends WalkThroughView {
 
     public WalkThroughScreenView showPreviousPage(boolean show) {
         mViewModel.setPreviousPageEnabled(show);
+        return this;
+    }
+
+    public WalkThroughScreenView showDeletePage(boolean show) {
+        mViewModel.setDeletePageEnabled(show);
         return this;
     }
 }
