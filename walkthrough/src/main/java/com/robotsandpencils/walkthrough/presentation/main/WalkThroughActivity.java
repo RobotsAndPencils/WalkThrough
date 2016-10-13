@@ -84,6 +84,11 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
         public boolean onPreviousPage() {
             return mNavigator.onPreviousPagePressed();
         }
+
+        @Override
+        public boolean onDeletePage() {
+            return mNavigator.onDeletePagePressed();
+        }
     };
 
     @Override

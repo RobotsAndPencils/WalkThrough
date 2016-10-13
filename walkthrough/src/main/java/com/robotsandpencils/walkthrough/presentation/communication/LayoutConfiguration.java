@@ -30,7 +30,6 @@ import android.support.annotation.NonNull;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.Page;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -47,7 +46,7 @@ public class LayoutConfiguration {
 
     @NonNull
     public List<Page> getLayouts() {
-        return Collections.unmodifiableList(mLayouts);
+        return mLayouts;
     }
 
     public static class Builder {

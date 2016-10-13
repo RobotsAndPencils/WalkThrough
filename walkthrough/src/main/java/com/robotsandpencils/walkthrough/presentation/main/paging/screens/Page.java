@@ -49,6 +49,8 @@ public class Page {
         boolean onNextPage();
 
         boolean onPreviousPage();
+
+        boolean onDeletePage();
     }
 
     private Listener mListener;
@@ -85,6 +87,11 @@ public class Page {
             @Override
             public boolean onPreviousPage() {
                 return mListener.onPreviousPage();
+            }
+
+            @Override
+            public boolean onDeletePage() {
+                return mListener.onDeletePage();
             }
         };
         mWalkThroughView.setListener(listener);

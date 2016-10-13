@@ -92,6 +92,16 @@
                 app:showIfEnabled="@{viewModel.nextEnabled}"/>
 
             <Button
+                android:id="@+id/button_no_thanks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="100dp"
+                android:text="No thanks"
+                app:showIfEnabled="@{viewModel.deletePageEnabled}"/>
+
+            <Button
                 android:text="&lt;"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
