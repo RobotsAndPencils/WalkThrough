@@ -81,4 +81,8 @@ public class Navigator {
     public boolean onPreviousPagePressed() {
         return mPagerFragment.goToPreviousPage();
     }
+
+    public boolean onDeletePagePressed() {
+        return mPagerFragment.deletePage();
+    }
 }

@@ -42,6 +42,7 @@ public class WalkThroughScreenViewModel extends BaseObservable {
     private boolean mCloseEnabled;
     private boolean mNextPageEnabled;
     private boolean mPreviousPageEnabled;
+    private boolean mDeletePageEnabled;
 
     @Bindable
     public String getMessage() {
@@ -101,6 +102,15 @@ public class WalkThroughScreenViewModel extends BaseObservable {
     public void setPreviousPageEnabled(boolean previousPageEnabled) {
         mPreviousPageEnabled = previousPageEnabled;
         notifyPropertyChanged(BR.previousPageEnabled);
+    }
+
+    @Bindable
+    public boolean isDeletePageEnabled() {
+        return mDeletePageEnabled;
+    }
+
+    public void setDeletePageEnabled(boolean deletePageEnabled) {
+        mDeletePageEnabled = deletePageEnabled;
     }
 
     @BindingAdapter({"showIfEnabled"})
