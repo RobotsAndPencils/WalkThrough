@@ -65,7 +65,8 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
         @Override
         public void onNext(List<Page> pageList) {
             if (pageList.size() > 0) {
-                mNavigator.showPagerFragment(getSupportFragmentManager(), pageList);
+                mNavigator.showPagerFragment(getSupportFragmentManager(), pageList,
+                        mWalkThroughManager.getLayoutConfiguration().getLayoutTheme());
             }
         }
 
@@ -116,7 +117,8 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
             page.setListener(listener);
         }
 
-        mNavigator.showPagerFragment(getSupportFragmentManager(), layouts);
+        mNavigator.showPagerFragment(getSupportFragmentManager(), layouts,
+                mWalkThroughManager.getLayoutConfiguration().getLayoutTheme());
     }
 
     @Override

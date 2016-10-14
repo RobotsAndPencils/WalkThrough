@@ -28,8 +28,10 @@ package com.robotsandpencils.walkthrough.presentation.main.paging;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +41,7 @@ import com.robotsandpencils.walkthrough.R;
 import com.robotsandpencils.walkthrough.databinding.FragmentPagerBinding;
 import com.robotsandpencils.walkthrough.presentation.common.Navigator;
 import com.robotsandpencils.walkthrough.presentation.common.dependency.dagger.DaggerWrapper;
+import com.robotsandpencils.walkthrough.presentation.communication.LayoutTheme;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.ScreensAdapter;
 
 import javax.inject.Inject;
@@ -58,8 +61,16 @@ public class PagerFragment extends Fragment implements PagerPresenter.View {
 
     private FragmentPagerBinding mBinding;
 
-    public static PagerFragment newInstance() {
-        return new PagerFragment();
+    public static PagerFragment newInstance(@NonNull LayoutTheme layoutTheme) {
+        PagerFragment pagerFragment = new PagerFragment();
+        pagerFragment.setLayoutTheme(layoutTheme);
+        return pagerFragment;
+    }
+
+    LayoutTheme mLayoutTheme;
+
+    private void setLayoutTheme(@NonNull LayoutTheme layoutTheme) {
+        mLayoutTheme = layoutTheme;
     }
 
     @Override
@@ -95,6 +106,10 @@ public class PagerFragment extends Fragment implements PagerPresenter.View {
         mBinding.viewPager.setAdapter(screensAdapter);
         if (screensAdapter.getCount() > 1) {
             mBinding.pageIndicator.setViewPager(mBinding.viewPager);
+            mBinding.pageIndicator.setFillColor(ContextCompat.getColor(getContext(),
+                    mLayoutTheme.getPagerIndicatorFillColor()));
+            mBinding.pageIndicator.setStrokeColor(ContextCompat.getColor(getContext(),
+                    mLayoutTheme.getPagerIndicatorStrokeColor()));
         }
     }
 

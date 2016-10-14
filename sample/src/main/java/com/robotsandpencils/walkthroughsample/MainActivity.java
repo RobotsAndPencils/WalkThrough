@@ -32,6 +32,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.robotsandpencils.walkthrough.presentation.communication.LayoutConfiguration;
+import com.robotsandpencils.walkthrough.presentation.communication.LayoutTheme;
 import com.robotsandpencils.walkthrough.presentation.communication.WalkThroughManager;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.Page;
 
@@ -50,8 +51,12 @@ public class MainActivity extends AppCompatActivity {
         WalkThroughManager mWalkThroughManager = WalkThroughManager.getInstance();
         LayoutConfiguration layoutConfiguration = new LayoutConfiguration.Builder()
                 .addLayouts(getScreens())
+                .setLayoutTheme(new LayoutTheme.Builder()
+                    .setPagerIndicatorFillColor(R.color.colorAccent)
+                    .setPagerIndicatorStrokeColor(R.color.colorPrimaryDark)
+                    .build())
                 .build();
-        mWalkThroughManager.start(this, layoutConfiguration, responseTag -> onClose(responseTag));
+        mWalkThroughManager.start(this, layoutConfiguration, this::onClose);
     }
 
     private void onClose(String responseTag) {
