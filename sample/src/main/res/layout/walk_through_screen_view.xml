@@ -38,13 +38,11 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/walkthrough_background"
         android:fillViewport="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <RelativeLayout
                 android:id="@+id/panel_top"

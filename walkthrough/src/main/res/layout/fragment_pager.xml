@@ -57,10 +57,8 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="@dimen/circle_indicator_height"
             android:padding="@dimen/circle_indicator_gap"
-            app:fillColor="@android:color/white"
             app:gapWidth="@dimen/circle_indicator_gap"
-            app:radius="@dimen/circle_indicator_gap"
-            app:strokeColor="@android:color/white" />
+            app:radius="@dimen/circle_indicator_gap" />
 
     </RelativeLayout>
 </layout>

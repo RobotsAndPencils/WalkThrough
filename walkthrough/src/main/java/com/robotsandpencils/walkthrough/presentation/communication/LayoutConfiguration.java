@@ -39,6 +39,7 @@ import java.util.List;
 
 public class LayoutConfiguration {
     private List<Page> mLayouts;
+    private LayoutTheme mLayoutTheme;
 
     private LayoutConfiguration(@NonNull ArrayList<Page> layouts) {
         mLayouts = layouts;
@@ -49,8 +50,18 @@ public class LayoutConfiguration {
         return mLayouts;
     }
 
+    @NonNull
+    public LayoutTheme getLayoutTheme() {
+        return mLayoutTheme;
+    }
+
+    private void setLayoutTheme(LayoutTheme layoutTheme) {
+        mLayoutTheme = layoutTheme;
+    }
+
     public static class Builder {
         private ArrayList<Page> mLayouts = new ArrayList<>();
+        private LayoutTheme mLayoutTheme;
 
         public Builder addLayout(@NonNull Page layout) {
             mLayouts.add(layout);
@@ -68,7 +79,17 @@ public class LayoutConfiguration {
             if (mLayouts.size() <= 0) {
                 throw new IllegalArgumentException("Please specify atleast one layout for building LayoutConfiguration");
             }
-            return new LayoutConfiguration(mLayouts);
+            if (mLayoutTheme == null) {
+                mLayoutTheme = new LayoutTheme();
+            }
+            LayoutConfiguration layoutConfiguration = new LayoutConfiguration(mLayouts);
+            layoutConfiguration.setLayoutTheme(mLayoutTheme);
+            return layoutConfiguration;
+        }
+
+        public Builder setLayoutTheme(@NonNull LayoutTheme layoutTheme) {
+            mLayoutTheme = layoutTheme;
+            return this;
         }
     }
 
