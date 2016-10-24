@@ -42,6 +42,8 @@ public class LayoutTheme {
     @ColorRes
     private int mPagerIndicatorStrokeColor = R.color.colorWhite;
 
+    private CustomAnimation mCustomAnimation = CustomAnimation.getDefault();
+
     public int getPagerIndicatorFillColor() {
         return mPagerIndicatorFillColor;
     }
@@ -58,6 +60,14 @@ public class LayoutTheme {
         mPagerIndicatorStrokeColor = pagerIndicatorStrokeColor;
     }
 
+    public CustomAnimation getCustomAnimation() {
+        return mCustomAnimation;
+    }
+
+    public void setCustomAnimation(CustomAnimation customAnimation) {
+        mCustomAnimation = customAnimation;
+    }
+
     public static class Builder {
 
         @ColorRes
@@ -66,6 +76,7 @@ public class LayoutTheme {
         @ColorRes
         private int mPagerIndicatorStrokeColor = R.color.colorWhite;
 
+        private CustomAnimation mCustomAnimation = CustomAnimation.getDefault();
 
         public Builder setPagerIndicatorFillColor(int pagerIndicatorFillColor) {
             mPagerIndicatorFillColor = pagerIndicatorFillColor;
@@ -74,6 +85,11 @@ public class LayoutTheme {
 
         public Builder setPagerIndicatorStrokeColor(int pagerIndicatorStrokeColor) {
             mPagerIndicatorStrokeColor = pagerIndicatorStrokeColor;
+            return this;
+        }
+
+        public Builder setCustomAnimation(CustomAnimation customAnimation) {
+            mCustomAnimation = customAnimation;
             return this;
         }
 
