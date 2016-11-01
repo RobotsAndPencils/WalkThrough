@@ -26,4 +26,8 @@
 <resources>
     <string name="app_name">WalkThrough</string>
     <string name="start_walkthrough">Start Walkthrough</string>
+    <string name="fragment_demo1">Fragment Demo 1</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello 22 blank fragment</string>
 </resources>

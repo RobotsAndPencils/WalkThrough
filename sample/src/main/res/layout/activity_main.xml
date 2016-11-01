@@ -37,8 +37,19 @@
     tools:context="com.robotsandpencils.walkthroughsample.MainActivity">
 
     <Button
+        android:id="@+id/walkthrough_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_walkthrough"
         android:onClick="startWalkthrough"/>
+
+    <Button
+        android:id="@+id/fragment_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/walkthrough_button"
+        android:text="@string/fragment_demo1"
+        android:onClick="startMainFragmentActivity"/>
+
+
 </RelativeLayout>
