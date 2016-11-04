@@ -32,6 +32,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.robotsandpencils.walkthrough.presentation.communication.CustomAnimation;
 import com.robotsandpencils.walkthrough.presentation.communication.LayoutConfiguration;
 import com.robotsandpencils.walkthrough.presentation.communication.LayoutTheme;
 import com.robotsandpencils.walkthrough.presentation.communication.WalkThroughManager;
@@ -55,11 +56,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void startWalkthrough(View v) {
         WalkThroughManager mWalkThroughManager = WalkThroughManager.getInstance();
+
+        CustomAnimation animation = CustomAnimation.getEnterExitInstance(R.anim.in_from_left, R.anim.out_to_right);
+
         LayoutConfiguration layoutConfiguration = new LayoutConfiguration.Builder()
                 .addLayouts(getScreens())
                 .setLayoutTheme(new LayoutTheme.Builder()
                     .setPagerIndicatorFillColor(R.color.colorAccent)
                     .setPagerIndicatorStrokeColor(R.color.colorPrimaryDark)
+                    .setCustomAnimation(animation)
                     .build())
                 .build();
         mWalkThroughManager.start(this, layoutConfiguration, this::onClose);

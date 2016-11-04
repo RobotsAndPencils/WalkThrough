@@ -54,14 +54,14 @@ public class Navigator {
         pushPageList(pageList);
         mPagerFragment = PagerFragment.newInstance(layoutTheme);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, mPagerFragment, TAG_PAGER_FRAGMENT + mCounter.next());
 
         CustomAnimation animations = layoutTheme.getCustomAnimation();
         if (animations == null) {
             animations = CustomAnimation.getDefault();
         }
-        fragmentTransaction.setCustomAnimations(animations.getEnter(), animations.getExit(), animations.getPopEnter(), animations.getPopExit());
 
-        fragmentTransaction.replace(R.id.fragment_container, mPagerFragment, TAG_PAGER_FRAGMENT + mCounter.next());
+        fragmentTransaction.setCustomAnimations(animations.getEnter(), animations.getExit()); // , animations.getPopEnter(), animations.getPopExit());
         fragmentTransaction.addToBackStack(TAG_PAGER_FRAGMENT + mCounter.current());
         fragmentTransaction.commitAllowingStateLoss();
     }

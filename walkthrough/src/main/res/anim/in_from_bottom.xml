@@ -24,33 +24,6 @@
   ~
   -->
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:background="#ff00"
-    tools:context="com.robotsandpencils.walkthroughsample.MainActivity">
-
-    <Button
-        android:id="@+id/walkthrough_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start_walkthrough"
-        android:onClick="startWalkthrough"/>
-
-    <Button
-        android:id="@+id/fragment_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/walkthrough_button"
-        android:text="@string/fragment_demo1"
-        android:onClick="startMainFragmentActivity"/>
-
-
-</RelativeLayout>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate android:fromYDelta="75%p" android:toYDelta="0%p" android:fillAfter="true" android:duration="500"/>
+</set>
