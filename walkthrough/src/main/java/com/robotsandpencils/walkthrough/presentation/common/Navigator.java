@@ -30,6 +30,7 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.robotsandpencils.walkthrough.R;
 import com.robotsandpencils.walkthrough.app.common.util.Counter;
+import com.robotsandpencils.walkthrough.presentation.communication.CustomAnimation;
 import com.robotsandpencils.walkthrough.presentation.communication.LayoutTheme;
 import com.robotsandpencils.walkthrough.presentation.main.paging.PagerFragment;
 import com.robotsandpencils.walkthrough.presentation.main.paging.screens.Page;
@@ -53,8 +54,13 @@ public class Navigator {
         pushPageList(pageList);
         mPagerFragment = PagerFragment.newInstance(layoutTheme);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left,
-                R.anim.in_from_left, R.anim.out_to_right);
+
+        CustomAnimation animations = layoutTheme.getCustomAnimation();
+        if (animations == null) {
+            animations = CustomAnimation.getDefault();
+        }
+        fragmentTransaction.setCustomAnimations(animations.getEnter(), animations.getExit(), animations.getPopEnter(), animations.getPopExit());
+
         fragmentTransaction.replace(R.id.fragment_container, mPagerFragment, TAG_PAGER_FRAGMENT + mCounter.next());
         fragmentTransaction.addToBackStack(TAG_PAGER_FRAGMENT + mCounter.current());
         fragmentTransaction.commitAllowingStateLoss();
