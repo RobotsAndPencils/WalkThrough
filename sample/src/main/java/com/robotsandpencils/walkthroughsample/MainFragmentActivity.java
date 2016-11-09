@@ -23,8 +23,8 @@ public class MainFragmentActivity extends AppCompatActivity implements Demo1Frag
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         transaction.setCustomAnimations(
-                R.anim.fragment_slide_left_enter, R.anim.fragment_slide_left_exit,
-                R.anim.fragment_slide_left_enter, R.anim.fragment_slide_left_exit);
+                R.anim.slide_in_up, R.anim.fragment_slide_left_exit,
+                R.anim.fragment_slide_left_enter ,  R.anim.slide_out_down);
 
         transaction.replace(R.id.fragment_container, fragment).addToBackStack("FragmentTag");
         transaction.commit();
