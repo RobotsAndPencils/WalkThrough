@@ -3,25 +3,24 @@ package com.robotsandpencils.walkthroughsample;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class Demo1Fragment extends Fragment {
+public class Demo2Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_demo1, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_demo2, container, false);
+    }
 
-        view.findViewById(R.id.next_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment  = new Demo2Fragment();
-                ((MainFragmentActivity) getActivity()).updateFragment(fragment);
-            }
-        });
-        return view;
+
+    public void onBackPressed() {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        fm.popBackStack();
     }
 
     /**

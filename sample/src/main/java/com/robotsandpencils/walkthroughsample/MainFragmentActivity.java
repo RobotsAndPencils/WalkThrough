@@ -22,9 +22,11 @@ public class MainFragmentActivity extends AppCompatActivity implements Demo1Frag
     protected void updateFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.setCustomAnimations(R.anim.fragment_slide_left_enter, R.anim.fragment_slide_left_exit);
+        transaction.setCustomAnimations(
+                R.anim.fragment_slide_left_enter, R.anim.fragment_slide_left_exit,
+                R.anim.fragment_slide_left_enter, R.anim.fragment_slide_left_exit);
 
-        transaction.replace(R.id.fragment_container, fragment);
+        transaction.replace(R.id.fragment_container, fragment).addToBackStack("FragmentTag");
         transaction.commit();
     }
 
