@@ -25,6 +25,7 @@
 
 package com.robotsandpencils.walkthrough.presentation.communication;
 
+import android.support.annotation.AnimatorRes;
 import android.support.annotation.ColorRes;
 
 import com.robotsandpencils.walkthrough.R;
@@ -41,6 +42,18 @@ public class LayoutTheme {
 
     @ColorRes
     private int mPagerIndicatorStrokeColor = R.color.colorWhite;
+    
+    @AnimatorRes
+    private int mPageListEnterAnimation = R.anim.in_from_right;
+
+    @AnimatorRes
+    private int mPageListExitAnimation = R.anim.out_to_left;
+
+    @AnimatorRes
+    private int mPageListPopEnterAnimation = R.anim.in_from_left;
+
+    @AnimatorRes
+    private int mPageListPopExitAnimation = R.anim.out_to_right;
 
     public int getPagerIndicatorFillColor() {
         return mPagerIndicatorFillColor;
@@ -58,6 +71,38 @@ public class LayoutTheme {
         mPagerIndicatorStrokeColor = pagerIndicatorStrokeColor;
     }
 
+    public int getPageListEnterAnimation() {
+        return mPageListEnterAnimation;
+    }
+
+    public void setPageListEnterAnimation(int pageListEnterAnimation) {
+        mPageListEnterAnimation = pageListEnterAnimation;
+    }
+
+    public int getPageListExitAnimation() {
+        return mPageListExitAnimation;
+    }
+
+    public void setPageListExitAnimation(int pageListExitAnimation) {
+        mPageListExitAnimation = pageListExitAnimation;
+    }
+
+    public int getPageListPopEnterAnimation() {
+        return mPageListPopEnterAnimation;
+    }
+
+    public void setPageListPopEnterAnimation(int pageListPopEnterAnimation) {
+        mPageListPopEnterAnimation = pageListPopEnterAnimation;
+    }
+
+    public int getPageListPopExitAnimation() {
+        return mPageListPopExitAnimation;
+    }
+
+    public void setPageListPopExitAnimation(int pageListPopExitAnimation) {
+        mPageListPopExitAnimation = pageListPopExitAnimation;
+    }
+
     public static class Builder {
 
         @ColorRes
@@ -66,6 +111,17 @@ public class LayoutTheme {
         @ColorRes
         private int mPagerIndicatorStrokeColor = R.color.colorWhite;
 
+        @AnimatorRes
+        private int mPageListEnterAnimation = R.anim.in_from_right;
+
+        @AnimatorRes
+        private int mPageListExitAnimation = R.anim.out_to_left;
+
+        @AnimatorRes
+        private int mPageListPopEnterAnimation = R.anim.in_from_left;
+
+        @AnimatorRes
+        private int mPageListPopExitAnimation = R.anim.out_to_right;
 
         public Builder setPagerIndicatorFillColor(int pagerIndicatorFillColor) {
             mPagerIndicatorFillColor = pagerIndicatorFillColor;
@@ -77,10 +133,50 @@ public class LayoutTheme {
             return this;
         }
 
+        public int getPageListEnterAnimation() {
+            return mPageListEnterAnimation;
+        }
+
+        public Builder setPageListEnterAnimation(int pageListEnterAnimation) {
+            mPageListEnterAnimation = pageListEnterAnimation;
+            return this;
+        }
+
+        public int getPageListExitAnimation() {
+            return mPageListExitAnimation;
+        }
+
+        public Builder setPageListExitAnimation(int pageListExitAnimation) {
+            mPageListExitAnimation = pageListExitAnimation;
+            return this;
+        }
+
+        public int getPageListPopEnterAnimation() {
+            return mPageListPopEnterAnimation;
+        }
+
+        public Builder setPageListPopEnterAnimation(int pageListPopEnterAnimation) {
+            mPageListPopEnterAnimation = pageListPopEnterAnimation;
+            return this;
+        }
+
+        public int getPageListPopExitAnimation() {
+            return mPageListPopExitAnimation;
+        }
+
+        public Builder setPageListPopExitAnimation(int pageListPopExitAnimation) {
+            mPageListPopExitAnimation = pageListPopExitAnimation;
+            return this;
+        }
+
         public LayoutTheme build() {
             LayoutTheme layoutTheme = new LayoutTheme();
             layoutTheme.setPagerIndicatorFillColor(mPagerIndicatorFillColor);
             layoutTheme.setPagerIndicatorStrokeColor(mPagerIndicatorStrokeColor);
+            layoutTheme.setPageListEnterAnimation(mPageListEnterAnimation);
+            layoutTheme.setPageListExitAnimation(mPageListExitAnimation);
+            layoutTheme.setPageListPopEnterAnimation(mPageListPopEnterAnimation);
+            layoutTheme.setPageListPopExitAnimation(mPageListPopExitAnimation);
             return layoutTheme;
         }
     }

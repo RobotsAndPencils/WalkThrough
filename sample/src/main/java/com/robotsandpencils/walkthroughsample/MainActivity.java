@@ -54,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
                 .setLayoutTheme(new LayoutTheme.Builder()
                     .setPagerIndicatorFillColor(R.color.colorAccent)
                     .setPagerIndicatorStrokeColor(R.color.colorPrimaryDark)
+                    .setPageListEnterAnimation(R.anim.in_from_bottom)
+                    .setPageListExitAnimation(R.anim.out_to_top)
+                    .setPageListPopEnterAnimation(R.anim.in_from_top)
+                    .setPageListPopExitAnimation(R.anim.out_to_bottom)
                     .build())
                 .build();
         mWalkThroughManager.start(this, layoutConfiguration, this::onClose);
