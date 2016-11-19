@@ -53,8 +53,10 @@ public class Navigator {
         pushPageList(pageList);
         mPagerFragment = PagerFragment.newInstance(layoutTheme);
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.setCustomAnimations(R.anim.in_from_right, R.anim.out_to_left,
-                R.anim.in_from_left, R.anim.out_to_right);
+        fragmentTransaction.setCustomAnimations(layoutTheme.getPageListEnterAnimation(),
+                layoutTheme.getPageListExitAnimation(),
+                layoutTheme.getPageListPopEnterAnimation(),
+                layoutTheme.getPageListPopExitAnimation());
         fragmentTransaction.replace(R.id.fragment_container, mPagerFragment, TAG_PAGER_FRAGMENT + mCounter.next());
         fragmentTransaction.addToBackStack(TAG_PAGER_FRAGMENT + mCounter.current());
         fragmentTransaction.commitAllowingStateLoss();
