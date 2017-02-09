@@ -31,6 +31,7 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 
 import com.robotsandpencils.walkthrough.presentation.main.WalkThroughActivity;
+import com.robotsandpencils.walkthrough.presentation.main.WalkThroughPresenter;
 
 import javax.inject.Singleton;
 
@@ -40,15 +41,16 @@ import javax.inject.Singleton;
  */
 
 @Singleton
-public class WalkThroughManager {
+public class WalkThroughManager implements WalkThroughPresenter.Spinner {
 
     private static WalkThroughManager sWalkThroughManager;
     public static final String WALKTHROUGH_DEFAULT_EXIT_MESSAGE = "exit_walk_through";
 
     private LayoutConfiguration mLayoutConfiguration;
-    private
+    private WalkThroughPresenter.Spinner spinner;
+
     @ColorRes
-    int mDefaultColor = android.R.color.transparent;
+    private int mDefaultColor = android.R.color.transparent;
 
     public interface Listener {
         void onWalkThroughComplete(String responseTag);
@@ -92,5 +94,23 @@ public class WalkThroughManager {
 
     public int getDefaultColor() {
         return mDefaultColor;
+    }
+
+    public void setSpinner(WalkThroughPresenter.Spinner spinner) {
+        this.spinner = spinner;
+    }
+
+    @Override
+    public void showProgress() {
+        if (spinner != null) {
+            spinner.showProgress();
+        }
+    }
+
+    @Override
+    public void hideProgress() {
+        if (spinner != null) {
+            spinner.hideProgress();
+        }
     }
 }
