@@ -25,6 +25,7 @@
 
 package com.robotsandpencils.walkthrough.presentation.communication;
 
+import android.support.annotation.AnimatorRes;
 import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
 
@@ -43,32 +44,34 @@ public class LayoutTheme {
     @ColorRes
     private int mPagerIndicatorStrokeColor = R.color.colorWhite;
     
+    @AnimatorRes
     private int mPageListEnterAnimation = R.anim.in_from_right;
 
+    @AnimatorRes
     private int mPageListExitAnimation = R.anim.out_to_left;
 
+    @AnimatorRes
     private int mPageListPopEnterAnimation = R.anim.in_from_left;
 
+    @AnimatorRes
     private int mPageListPopExitAnimation = R.anim.out_to_right;
 
     @StringRes
     private int mProgressMessage = R.string.loading_please_wait;
 
-    @ColorRes
     public int getPagerIndicatorFillColor() {
         return mPagerIndicatorFillColor;
     }
 
-    private void setPagerIndicatorFillColor(@ColorRes int pagerIndicatorFillColor) {
+    private void setPagerIndicatorFillColor(int pagerIndicatorFillColor) {
         mPagerIndicatorFillColor = pagerIndicatorFillColor;
     }
 
-    @ColorRes
     public int getPagerIndicatorStrokeColor() {
         return mPagerIndicatorStrokeColor;
     }
 
-    private void setPagerIndicatorStrokeColor(@ColorRes int pagerIndicatorStrokeColor) {
+    private void setPagerIndicatorStrokeColor(int pagerIndicatorStrokeColor) {
         mPagerIndicatorStrokeColor = pagerIndicatorStrokeColor;
     }
 
@@ -104,12 +107,11 @@ public class LayoutTheme {
         mPageListPopExitAnimation = pageListPopExitAnimation;
     }
 
-    @StringRes
     public int getProgressMessage() {
         return mProgressMessage;
     }
 
-    public void setProgressMessage(@StringRes int progressMessage) {
+    public void setProgressMessage(int progressMessage) {
         mProgressMessage = progressMessage;
     }
 
@@ -121,23 +123,27 @@ public class LayoutTheme {
         @ColorRes
         private int mPagerIndicatorStrokeColor = R.color.colorWhite;
 
+        @AnimatorRes
         private int mPageListEnterAnimation = R.anim.in_from_right;
 
+        @AnimatorRes
         private int mPageListExitAnimation = R.anim.out_to_left;
 
+        @AnimatorRes
         private int mPageListPopEnterAnimation = R.anim.in_from_left;
 
+        @AnimatorRes
         private int mPageListPopExitAnimation = R.anim.out_to_right;
 
         @StringRes
         private int mProgressMessage = R.string.loading_please_wait;
 
-        public Builder setPagerIndicatorFillColor(@ColorRes int pagerIndicatorFillColor) {
+        public Builder setPagerIndicatorFillColor(int pagerIndicatorFillColor) {
             mPagerIndicatorFillColor = pagerIndicatorFillColor;
             return this;
         }
 
-        public Builder setPagerIndicatorStrokeColor(@ColorRes int pagerIndicatorStrokeColor) {
+        public Builder setPagerIndicatorStrokeColor(int pagerIndicatorStrokeColor) {
             mPagerIndicatorStrokeColor = pagerIndicatorStrokeColor;
             return this;
         }
@@ -178,12 +184,11 @@ public class LayoutTheme {
             return this;
         }
 
-        @StringRes
         public int getProgressMessage() {
             return mProgressMessage;
         }
 
-        public Builder setProgressMessage(@StringRes int progressMessage) {
+        public Builder setProgressMessage(int progressMessage) {
             mProgressMessage = progressMessage;
             return this;
         }
