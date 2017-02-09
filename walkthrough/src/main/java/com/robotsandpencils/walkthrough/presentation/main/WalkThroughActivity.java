@@ -29,6 +29,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.robotsandpencils.walkthrough.R;
 import com.robotsandpencils.walkthrough.databinding.ActivityWalkthroughBinding;
@@ -41,7 +42,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class WalkThroughActivity extends AppCompatActivity implements WalkThroughPresenter.View {
+public class WalkThroughActivity extends AppCompatActivity implements WalkThroughPresenter.View,
+                                                                      WalkThroughPresenter.Spinner {
 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private ActivityWalkthroughBinding mBinding;
@@ -100,6 +102,7 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_walkthrough);
         mBinding.fragmentContainer.setBackgroundColor(ContextCompat.getColor(this, mWalkThroughManager.getDefaultColor()));
+        mWalkThroughManager.setSpinner(this);
         mPresenter.attach(this);
     }
 
@@ -119,6 +122,16 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
 
         mNavigator.showPagerFragment(getSupportFragmentManager(), layouts,
                 mWalkThroughManager.getLayoutConfiguration().getLayoutTheme());
+    }
+
+    @Override
+    public void showProgress() {
+        mBinding.progressFrame.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        mBinding.progressFrame.setVisibility(View.GONE);
     }
 
     @Override

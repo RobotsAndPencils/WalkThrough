@@ -26,4 +26,5 @@
 
 <resources>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
 </resources>
