@@ -106,7 +106,6 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_walkthrough);
         mBinding.fragmentContainer.setBackgroundColor(ContextCompat.getColor(this, mWalkThroughManager.getDefaultColor()));
-        mWalkThroughManager.setSpinner(this);
         mPresenter.attach(this);
     }
 
@@ -115,6 +114,18 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
         super.onDestroy();
         mNavigator.clear();
         mPresenter.detach();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mWalkThroughManager.setSpinner(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mWalkThroughManager.setSpinner(null);
     }
 
     @Override
