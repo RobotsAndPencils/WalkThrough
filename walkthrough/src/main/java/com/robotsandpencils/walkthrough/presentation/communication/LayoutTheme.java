@@ -27,6 +27,7 @@ package com.robotsandpencils.walkthrough.presentation.communication;
 
 import android.support.annotation.AnimatorRes;
 import android.support.annotation.ColorRes;
+import android.support.annotation.StringRes;
 
 import com.robotsandpencils.walkthrough.R;
 
@@ -54,6 +55,9 @@ public class LayoutTheme {
 
     @AnimatorRes
     private int mPageListPopExitAnimation = R.anim.out_to_right;
+
+    @StringRes
+    private int mProgressMessage = R.string.loading_please_wait;
 
     public int getPagerIndicatorFillColor() {
         return mPagerIndicatorFillColor;
@@ -103,6 +107,14 @@ public class LayoutTheme {
         mPageListPopExitAnimation = pageListPopExitAnimation;
     }
 
+    public int getProgressMessage() {
+        return mProgressMessage;
+    }
+
+    public void setProgressMessage(int progressMessage) {
+        mProgressMessage = progressMessage;
+    }
+
     public static class Builder {
 
         @ColorRes
@@ -122,6 +134,9 @@ public class LayoutTheme {
 
         @AnimatorRes
         private int mPageListPopExitAnimation = R.anim.out_to_right;
+
+        @StringRes
+        private int mProgressMessage = R.string.loading_please_wait;
 
         public Builder setPagerIndicatorFillColor(int pagerIndicatorFillColor) {
             mPagerIndicatorFillColor = pagerIndicatorFillColor;
@@ -169,6 +184,15 @@ public class LayoutTheme {
             return this;
         }
 
+        public int getProgressMessage() {
+            return mProgressMessage;
+        }
+
+        public Builder setProgressMessage(int progressMessage) {
+            mProgressMessage = progressMessage;
+            return this;
+        }
+
         public LayoutTheme build() {
             LayoutTheme layoutTheme = new LayoutTheme();
             layoutTheme.setPagerIndicatorFillColor(mPagerIndicatorFillColor);
@@ -177,6 +201,7 @@ public class LayoutTheme {
             layoutTheme.setPageListExitAnimation(mPageListExitAnimation);
             layoutTheme.setPageListPopEnterAnimation(mPageListPopEnterAnimation);
             layoutTheme.setPageListPopExitAnimation(mPageListPopExitAnimation);
+            layoutTheme.setProgressMessage(mProgressMessage);
             return layoutTheme;
         }
     }
