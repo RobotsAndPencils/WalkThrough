@@ -41,6 +41,11 @@ public class WalkThroughPresenter {
         void showWalkThrough();
     }
 
+    public interface Spinner {
+        void showProgress();
+        void hideProgress();
+    }
+
     public WalkThroughPresenter(UiThreadQueue uiThreadQueue) {
         this.mUiThreadQueue = uiThreadQueue;
     }

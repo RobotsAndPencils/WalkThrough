@@ -30,6 +30,27 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent">
+
+        <FrameLayout
+            android:id="@+id/progress_frame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:animateLayoutChanges="true"
+            android:background="@color/colorWhite"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"/>
+
+        </FrameLayout>
+
+    </RelativeLayout>
 
 </layout>
