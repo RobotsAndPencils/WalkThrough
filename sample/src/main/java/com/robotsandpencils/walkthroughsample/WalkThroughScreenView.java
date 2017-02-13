@@ -101,4 +101,9 @@ public class WalkThroughScreenView extends WalkThroughView {
         mViewModel.setDeletePageEnabled(show);
         return this;
     }
+
+    public WalkThroughScreenView setDecline(OnClickListener listener) {
+        mBinding.buttonNoThanks.setOnClickListener(listener);
+        return this;
+    }
 }

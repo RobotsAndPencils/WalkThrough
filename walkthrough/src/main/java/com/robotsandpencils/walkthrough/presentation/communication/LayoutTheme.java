@@ -25,6 +25,9 @@
 
 package com.robotsandpencils.walkthrough.presentation.communication;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
 
@@ -42,7 +45,7 @@ public class LayoutTheme {
 
     @ColorRes
     private int mPagerIndicatorStrokeColor = R.color.colorWhite;
-    
+
     private int mPageListEnterAnimation = R.anim.in_from_right;
 
     private int mPageListExitAnimation = R.anim.out_to_left;
@@ -53,6 +56,10 @@ public class LayoutTheme {
 
     @StringRes
     private int mProgressMessage = R.string.loading_please_wait;
+
+    private Drawable mProgressBackground = new ColorDrawable(Color.TRANSPARENT);
+
+    private boolean mUseVerticalProgressDialog = false;
 
     @ColorRes
     public int getPagerIndicatorFillColor() {
@@ -113,6 +120,22 @@ public class LayoutTheme {
         mProgressMessage = progressMessage;
     }
 
+    public Drawable getProgressBackground() {
+        return mProgressBackground;
+    }
+
+    public void setProgressBackground(Drawable progressBackground) {
+        mProgressBackground = progressBackground;
+    }
+
+    public boolean useVerticalProgressDialog() {
+        return mUseVerticalProgressDialog;
+    }
+
+    public void setVerticalProgressDialog(boolean useVerticalProgressDialog) {
+        mUseVerticalProgressDialog = useVerticalProgressDialog;
+    }
+
     public static class Builder {
 
         @ColorRes
@@ -131,6 +154,10 @@ public class LayoutTheme {
 
         @StringRes
         private int mProgressMessage = R.string.loading_please_wait;
+
+        private Drawable mProgressBackground = new ColorDrawable(Color.TRANSPARENT);
+
+        private boolean mUseVerticalProgressDialog = false;
 
         public Builder setPagerIndicatorFillColor(@ColorRes int pagerIndicatorFillColor) {
             mPagerIndicatorFillColor = pagerIndicatorFillColor;
@@ -188,6 +215,16 @@ public class LayoutTheme {
             return this;
         }
 
+        public Builder setProgressBackground(Drawable progressBackground) {
+            mProgressBackground = progressBackground;
+            return this;
+        }
+
+        public Builder setVerticalProgressDialog(boolean useVerticalProgressDialog) {
+            mUseVerticalProgressDialog = useVerticalProgressDialog;
+            return this;
+        }
+
         public LayoutTheme build() {
             LayoutTheme layoutTheme = new LayoutTheme();
             layoutTheme.setPagerIndicatorFillColor(mPagerIndicatorFillColor);
@@ -197,6 +234,8 @@ public class LayoutTheme {
             layoutTheme.setPageListPopEnterAnimation(mPageListPopEnterAnimation);
             layoutTheme.setPageListPopExitAnimation(mPageListPopExitAnimation);
             layoutTheme.setProgressMessage(mProgressMessage);
+            layoutTheme.setProgressBackground(mProgressBackground);
+            layoutTheme.setVerticalProgressDialog(mUseVerticalProgressDialog);
             return layoutTheme;
         }
     }

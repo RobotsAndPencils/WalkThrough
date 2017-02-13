@@ -27,4 +27,5 @@
 <resources>
     <dimen name="circle_indicator_height">25dp</dimen>
     <dimen name="circle_indicator_gap">5dp</dimen>
+    <dimen name="default_space">10dp</dimen>
 </resources>
