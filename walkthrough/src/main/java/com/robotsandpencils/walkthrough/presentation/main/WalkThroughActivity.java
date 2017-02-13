@@ -32,6 +32,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 
 import com.robotsandpencils.walkthrough.R;
 import com.robotsandpencils.walkthrough.databinding.ActivityWalkthroughBinding;
@@ -141,12 +143,21 @@ public class WalkThroughActivity extends AppCompatActivity implements WalkThroug
 
     @Override
     public void showProgress() {
-        progress = new ProgressDialog(this);
-        progress.setMessage(getString(mWalkThroughManager.getLayoutConfiguration().getLayoutTheme().getProgressMessage()));
-        progress.setIndeterminate(false);
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        progress.show();
+        if (mWalkThroughManager.getLayoutConfiguration().getLayoutTheme().useVerticalProgressDialog()) {
+            View view = View.inflate(this, R.layout.vertically_centered_progress_dialog, null);
+            TextView progressMessage = (TextView) view.findViewById(R.id.progress_message);
+            progressMessage.setText(mWalkThroughManager.getLayoutConfiguration().getLayoutTheme().getProgressMessage());
+            progress = ProgressDialog.show(this, null, null, true);
+            progress.setContentView(view);
+            progress.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        } else {
+            progress = new ProgressDialog(this);
+            progress.setMessage(getString(mWalkThroughManager.getLayoutConfiguration().getLayoutTheme().getProgressMessage()));
+            progress.setIndeterminate(false);
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progress.show();
+        }
     }
 
     @Override

@@ -26,6 +26,7 @@
 package com.robotsandpencils.walkthroughsample;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,6 +42,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private WalkThroughManager mWalkThroughManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startWalkthrough(View v) {
-        WalkThroughManager mWalkThroughManager = WalkThroughManager.getInstance();
+        mWalkThroughManager = WalkThroughManager.getInstance();
         LayoutConfiguration layoutConfiguration = new LayoutConfiguration.Builder()
                 .addLayouts(getScreens())
                 .setLayoutTheme(new LayoutTheme.Builder()
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     .setPageListExitAnimation(R.anim.out_to_top)
                     .setPageListPopEnterAnimation(R.anim.in_from_top)
                     .setPageListPopExitAnimation(R.anim.out_to_bottom)
+                    .setVerticalProgressDialog(true)
                     .build())
                 .build();
         mWalkThroughManager.start(this, layoutConfiguration, this::onClose);
@@ -95,7 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage("and check the Organize Notes checkbox")
                 .showBack(true)
                 .showPreviousPage(true)
-                .showClose(true);
+                .showClose(true)
+                .showDeletePage(true)
+                .setDecline(v -> {
+                    mWalkThroughManager.showProgress();
+                    Handler handler = new Handler();
+                    handler.postDelayed(() -> mWalkThroughManager.hideProgress(), 5000);
+                });
 
         List<Page> page2List = new ArrayList<>();
         page2List.add(new Page(screen2a, null));

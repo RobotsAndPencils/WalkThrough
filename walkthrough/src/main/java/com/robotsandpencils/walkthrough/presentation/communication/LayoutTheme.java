@@ -54,6 +54,8 @@ public class LayoutTheme {
     @StringRes
     private int mProgressMessage = R.string.loading_please_wait;
 
+    private boolean mUseVerticalProgressDialog = false;
+
     @ColorRes
     public int getPagerIndicatorFillColor() {
         return mPagerIndicatorFillColor;
@@ -113,6 +115,14 @@ public class LayoutTheme {
         mProgressMessage = progressMessage;
     }
 
+    public boolean useVerticalProgressDialog() {
+        return mUseVerticalProgressDialog;
+    }
+
+    public void setVerticalProgressDialog(boolean useVerticalProgressDialog) {
+        mUseVerticalProgressDialog = useVerticalProgressDialog;
+    }
+
     public static class Builder {
 
         @ColorRes
@@ -131,6 +141,8 @@ public class LayoutTheme {
 
         @StringRes
         private int mProgressMessage = R.string.loading_please_wait;
+
+        private boolean mUseVerticalProgressDialog = false;
 
         public Builder setPagerIndicatorFillColor(@ColorRes int pagerIndicatorFillColor) {
             mPagerIndicatorFillColor = pagerIndicatorFillColor;
@@ -188,6 +200,11 @@ public class LayoutTheme {
             return this;
         }
 
+        public Builder setVerticalProgressDialog(boolean useVerticalProgressDialog) {
+            mUseVerticalProgressDialog = useVerticalProgressDialog;
+            return this;
+        }
+
         public LayoutTheme build() {
             LayoutTheme layoutTheme = new LayoutTheme();
             layoutTheme.setPagerIndicatorFillColor(mPagerIndicatorFillColor);
@@ -197,6 +214,7 @@ public class LayoutTheme {
             layoutTheme.setPageListPopEnterAnimation(mPageListPopEnterAnimation);
             layoutTheme.setPageListPopExitAnimation(mPageListPopExitAnimation);
             layoutTheme.setProgressMessage(mProgressMessage);
+            layoutTheme.setVerticalProgressDialog(mUseVerticalProgressDialog);
             return layoutTheme;
         }
     }
