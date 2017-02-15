@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/RobotsAndPencils/WalkThrough'
     gitUrl = 'https://github.com/RobotsAndPencils/WalkThrough.git'
 
-    libraryVersion = '0.0.10'
+    libraryVersion = '0.0.11'
 
     developerId = 'android'
     developerName = 'Robots & Pencils Android Team'
