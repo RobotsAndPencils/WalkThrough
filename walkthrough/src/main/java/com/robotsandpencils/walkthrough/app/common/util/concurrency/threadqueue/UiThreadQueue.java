@@ -35,8 +35,30 @@ import android.os.Looper;
 
 public class UiThreadQueue extends ThreadQueue {
 
+    private int mReferencCount;
+
     public UiThreadQueue() {
         super(new AndroidHandlerRunner(new Handler(Looper.getMainLooper())));
+        mReferencCount = 0;
     }
 
+    @Override
+    public boolean isEnabled() {
+        return mReferencCount > 0;
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        if (enabled) {
+            mReferencCount++;
+        } else {
+            if (mReferencCount > 0) {
+                mReferencCount--;
+            }
+        }
+
+        if (!isEnabled()) {
+            clear();
+        }
+    }
 }
