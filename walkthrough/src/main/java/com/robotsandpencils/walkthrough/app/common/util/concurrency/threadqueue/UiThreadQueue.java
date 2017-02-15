@@ -35,8 +35,24 @@ import android.os.Looper;
 
 public class UiThreadQueue extends ThreadQueue {
 
+    private int mCount;
+
     public UiThreadQueue() {
         super(new AndroidHandlerRunner(new Handler(Looper.getMainLooper())));
+        mCount = 0;
     }
 
+    @Override
+    public boolean isEnabled() {
+        return mCount > 0;
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        mCount += enabled ? 1 : -1;
+
+        if (!isEnabled()) {
+            clear();
+        }
+    }
 }
